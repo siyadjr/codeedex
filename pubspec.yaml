@@ -38,6 +38,7 @@ dependencies:
   provider: ^6.1.5+1
   shared_preferences: ^2.5.3
   shimmer: ^3.0.0
+  flutter_animator: ^3.2.2
 
 dev_dependencies:
   flutter_test:

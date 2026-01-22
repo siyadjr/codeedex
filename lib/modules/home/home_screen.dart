@@ -6,6 +6,7 @@ import 'package:codeedex/modules/home/widgets/home_banner.dart';
 import 'package:codeedex/modules/home/widgets/product_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_animator/flutter_animator.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -40,55 +41,82 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(12.0),
                     child: Column(
                       children: [
-                        SizedBox(
-                          height: 200,
-                          child: PageView(
-                            children: [
-                              HomeBanner(
-                                mainColor: const Color.fromARGB(
-                                  255,
-                                  245,
-                                  119,
-                                  22,
+                        FadeInRight(
+                          preferences: AnimationPreferences(
+                            duration: const Duration(milliseconds: 800),
+                          ),
+                          child: SizedBox(
+                            height: 200,
+                            child: PageView(
+                              children: [
+                                HomeBanner(
+                                  mainColor: const Color.fromARGB(
+                                    255,
+                                    245,
+                                    119,
+                                    22,
+                                  ),
+                                  secondaryColor: AppColors.highlight,
                                 ),
-                                secondaryColor: AppColors.highlight,
-                              ),
-                              HomeBanner(
-                                mainColor: const Color.fromARGB(
-                                  255,
-                                  75,
-                                  185,
-                                  232,
+                                HomeBanner(
+                                  mainColor: const Color.fromARGB(
+                                    255,
+                                    75,
+                                    185,
+                                    232,
+                                  ),
+                                  secondaryColor: AppColors.highlight2,
                                 ),
-                                secondaryColor: AppColors.highlight2,
-                              ),
-                              HomeBanner(
-                                mainColor: const Color.fromARGB(
-                                  255,
-                                  248,
-                                  92,
-                                  191,
+                                HomeBanner(
+                                  mainColor: const Color.fromARGB(
+                                    255,
+                                    248,
+                                    92,
+                                    191,
+                                  ),
+                                  secondaryColor: AppColors.highlight3,
                                 ),
-                                secondaryColor: AppColors.highlight3,
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(height: 10),
-                        CategoriesSection(categories: provider.categories),
+                        FadeInLeft(
+                          preferences: AnimationPreferences(
+                            duration: const Duration(milliseconds: 800),
+                          ),
+                          child: CategoriesSection(
+                            categories: provider.categories,
+                          ),
+                        ),
                         SizedBox(height: 10),
                         Divider(color: AppColors.appBackground, thickness: 8),
                         SizedBox(height: 10),
-                        FeaturedProductsSection(
-                          title: 'Featured Products',
-                          products: provider.products,
+                        FadeInUp(
+                          preferences: AnimationPreferences(
+                            duration: const Duration(milliseconds: 800),
+                          ),
+                          child: FeaturedProductsSection(
+                            title: 'Featured Products',
+                            products: provider.products,
+                          ),
                         ),
                         SizedBox(height: 10),
                         SizedBox(
                           width: double.infinity,
-                          child: HomeBanner(
-                            mainColor: const Color.fromARGB(255, 132, 56, 208),
-                            secondaryColor: AppColors.highlight4,
+                          child: FadeInUp(
+                            preferences: AnimationPreferences(
+                              duration: const Duration(milliseconds: 800),
+                            ),
+                            child: HomeBanner(
+                              mainColor: const Color.fromARGB(
+                                255,
+                                132,
+                                56,
+                                208,
+                              ),
+                              secondaryColor: AppColors.highlight4,
+                            ),
                           ),
                         ),
                         SizedBox(height: 10),

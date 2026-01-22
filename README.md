@@ -25,8 +25,12 @@ The remaining screens follow a similar pattern and can be implemented quickly us
 🛠️ Tech Stack & Packages Used
 
 State Management: Provider
+
 fonts :'Lufga'
+
 Networking: Dio
+
+Animation :Flutter animator
 
 Local Storage: SharedPreferences (for storing auth token)
 
