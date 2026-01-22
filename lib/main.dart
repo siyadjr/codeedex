@@ -1,5 +1,6 @@
 import 'package:codeedex/modules/auth/controller/auth_provider.dart';
 import 'package:codeedex/modules/auth/login_screen.dart';
+import 'package:codeedex/modules/home/controller/home_provider.dart';
 import 'package:codeedex/modules/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_)=> AuthProvider()),
+        ChangeNotifierProvider(create: (_)=> HomeProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

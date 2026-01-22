@@ -1,10 +1,12 @@
 import 'dart:developer';
 
 import 'package:codeedex/servieces/backend_servieces.dart';
+import 'package:codeedex/servieces/local_storage_service.dart';
 import 'package:flutter/material.dart';
 
 class AuthProvider extends ChangeNotifier {
   final BackendServices _backendServices = BackendServices();
+  final LocalStorageService _localStorageService = LocalStorageService();
 
   bool isLoading = false;
   bool validated = false;
@@ -35,6 +37,9 @@ class AuthProvider extends ChangeNotifier {
       if (response.statusCode == 200 && response.data['success'] == 1) {
         // Extract required values
         log('Login successful: ${response.data}');
+        final String token = response.data['customerdata']['token'];
+        log('token is $token');
+        await _localStorageService.saveToken(token);
 
         return true;
       } else {
@@ -44,6 +49,7 @@ class AuthProvider extends ChangeNotifier {
         return false;
       }
     } catch (e) {
+      log('Login error: $e');
       errorMessage = 'Login failed';
       return false;
     } finally {

@@ -31,12 +31,9 @@ class BackendServices {
     required String id,
     required String token,
   }) async {
-    return await _dio.get(
+    return await _dio.post(
       '/home/en',
-      queryParameters: {
-        'id': id,
-        'token': token,
-      },
+      data: FormData.fromMap({'id': id, 'token': token}),
     );
   }
 
@@ -47,14 +44,9 @@ class BackendServices {
     String? by,
     String? value,
   }) async {
-    return await _dio.get(
+    return await _dio.post(
       '/products/en',
-      queryParameters: {
-        'id': id,
-        'token': token,
-        'by': by,
-        'value': value,
-      },
+      queryParameters: {'id': id, 'token': token, 'by': by, 'value': value},
     );
   }
 }
