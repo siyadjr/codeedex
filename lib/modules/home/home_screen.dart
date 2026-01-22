@@ -6,6 +6,41 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(backgroundColor: AppColors.appBackground);
+    return Scaffold(
+      backgroundColor: AppColors.appBackground,
+      appBar: AppBar(
+        backgroundColor: AppColors.primary,
+        leading: Image.asset('assets/homescreen appbar icon.png'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search, color: AppColors.surfaceWhite),
+            onPressed: () {
+              // Handle notification icon press
+            },
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.favorite_outline,
+              color: AppColors.surfaceWhite,
+            ),
+            onPressed: () {
+              // Handle notification icon press
+            },
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.notifications_none,
+              color: AppColors.surfaceWhite,
+            ),
+            onPressed: () {
+              // Handle notification icon press
+            },
+          ),
+        ],
+      ),
+      body: Center(child: Column(children: [
+        
+      ],)),
+    );
   }
 }

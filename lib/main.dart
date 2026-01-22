@@ -1,6 +1,8 @@
+import 'package:codeedex/modules/auth/controller/auth_provider.dart';
 import 'package:codeedex/modules/auth/login_screen.dart';
 import 'package:codeedex/modules/home/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Codedex',
-      home: const LoginScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_)=> AuthProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Codedex',
+        theme: ThemeData(fontFamily: 'Lufga'),
+        home: const LoginScreen(),
+      ),
     );
   }
 }
