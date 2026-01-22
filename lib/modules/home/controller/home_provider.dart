@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-import 'package:codeedex/models/banner_model.dart';
 import 'package:codeedex/models/category_model.dart';
 import 'package:codeedex/models/product_models.dart';
 import 'package:codeedex/servieces/backend_servieces.dart';
@@ -11,7 +9,7 @@ class HomeProvider extends ChangeNotifier {
   bool isLoading = false;
 
   List<ProductModel> products = [];
-  List<BannerModel> banners = [];
+
   List<CategoryModel> categories = [];
 
   final BackendServices backendServices = BackendServices();
@@ -29,10 +27,6 @@ class HomeProvider extends ChangeNotifier {
       );
 
       if (response.statusCode == 200 && response.data['success'] == 1) {
-        banners = (response.data['banner1'] as List)
-            .map((e) => BannerModel.fromJson(e))
-            .toList();
-
         products = (response.data['newarrivals'] as List)
             .map((e) => ProductModel.fromJson(e))
             .toList();

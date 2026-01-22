@@ -37,16 +37,5 @@ class BackendServices {
     );
   }
 
-  // ✅ PRODUCTS — GET
-  Future<Response> fetchProducts({
-    required String id,
-    required String token,
-    String? by,
-    String? value,
-  }) async {
-    return await _dio.post(
-      '/products/en',
-      queryParameters: {'id': id, 'token': token, 'by': by, 'value': value},
-    );
-  }
+ 
 }
